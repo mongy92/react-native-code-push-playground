@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">RNCodePushDemo</string>
-</resources>
+     <string name="app_name">RNCodePushDemo</string>
+     <string moduleConfig="true" name="CodePushDeploymentKey">gesXwoHb_ktA06gROecBeSxGfmW7tM01vkj81</string>
+ </resources>
