@@ -5,6 +5,7 @@ import codePush from 'react-native-code-push';
 import {codePushDeploymentKey} from '../..';
 const Updating = () => {
   const [statusText, setstatusText] = useState('Checking for updates');
+  const [progress, setProgress] = useState(0);
   const navigation = useNavigation();
   useEffect(() => {
     codePushUpdate();
@@ -39,12 +40,19 @@ const Updating = () => {
           setstatusText(text);
         }
       },
+      progress => {
+        const percentage = Math.ceil(
+          (progress.receivedBytes / progress.totalBytes) * 100,
+        );
+        setProgress(percentage);
+      },
     );
   };
   return (
     <View style={styles.container}>
       <ActivityIndicator size={'large'} />
       <Text>{statusText}</Text>
+      <Text>{progress}</Text>
     </View>
   );
 };
