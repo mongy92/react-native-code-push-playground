@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StatusBar} from 'react-native';
+import {Button, ScrollView, StatusBar} from 'react-native';
 
 import spaceQuestions from '../data/space';
 import westernsQuestions from '../data/westerns';
@@ -8,6 +8,8 @@ import computerQuestions from '../data/computers';
 import {RowItem} from '../components/RowItem';
 import {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/core';
+import codePush from 'react-native-code-push';
+import {codePushDeploymentKey} from '../..';
 
 export default () => {
   const navigation = useNavigation();
@@ -18,6 +20,16 @@ export default () => {
   }, [navigation]);
   return (
     <ScrollView>
+      <Button
+        title={'CHECK FOR UPDATE'}
+        onPress={() => {
+          codePush.sync({
+            deploymentKey: codePushDeploymentKey,
+            installMode: codePush.InstallMode.IMMEDIATE,
+            updateDialog: true,
+          });
+        }}
+      />
       <RowItem
         name="Space"
         color="#36b1f0"
