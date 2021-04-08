@@ -27,3 +27,8 @@ const MyApp = codePush({
 })(App);
 
 AppRegistry.registerComponent(appName, () => MyApp);
+
+/**
+ * install mandatory update
+ * $ appcenter codepush release-react -a  RNDemos/RNCodePushDemo-iOS --mandatory
+ */
