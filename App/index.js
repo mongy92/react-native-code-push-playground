@@ -2,7 +2,8 @@ import React from 'react';
 import QuizIndex from './screens/QuizIndex';
 import Quiz from './screens/Quiz';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import Updating from './screens/Updating';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,11 @@ const App = () => {
               },
             };
           }}
+        />
+        <Stack.Screen
+          component={Updating}
+          name={'Updating'}
+          options={{headerShown: false, ...TransitionPresets.ModalTransition}}
         />
       </Stack.Navigator>
     </NavigationContainer>
