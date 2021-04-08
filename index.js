@@ -8,7 +8,7 @@ import {name as appName} from './app.json';
 import 'react-native-gesture-handler';
 import codePush from 'react-native-code-push';
 
-const codePushsKeys = Platform.select({
+const codePushKeys = Platform.select({
   ios: {
     STATGING: '9oU6z9xic4FiRtyI--ZZvpwlNGLkqmQhJGnEcV',
     PRODUCTION: 'SH08OCFzA-mUGoFPBy0CScT9dbQof8z88R9rm',
@@ -19,10 +19,11 @@ const codePushsKeys = Platform.select({
   },
 });
 
-const isBetaUser = false;
-
+const isBetaUser = true;
 const MyApp = codePush({
-  deploymentKey: isBetaUser ? codePushsKeys.STATGING : codePushsKeys.PRODUCTION,
+  deploymentKey: isBetaUser ? codePushKeys.STAGING : codePushKeys.PRODUCTION,
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
 })(App);
 
 AppRegistry.registerComponent(appName, () => MyApp);
